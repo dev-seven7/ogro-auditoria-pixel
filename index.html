@@ -1,0 +1,149 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow">
+<title>Auditoria de Pixel Ogro</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Archivo+Narrow:wght@500;600;700&display=swap">
+<style>
+/* Layout: relatório de uma coluna; notas em réguas 0–10; resumo em três números, depois blocos A (site/LP) e B (cardápio) */
+:root{
+  --bg:#F6F3EF; --surface:#FFFFFF; --fg:#1E1A17; --muted:#6B625A; --line:#E3DCD3;
+  --brand:#8B1A1A; --good:#2F7D4A; --warn:#B7791F; --bad:#B42318; --track:#ECE6DE;
+  --display:"Archivo Narrow","Archivo",system-ui,sans-serif; --body:"Archivo",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141110; --surface:#1D1917; --fg:#EFEAE4; --muted:#A79C91; --line:#342D29;
+  --brand:#D0534B; --good:#5CBF7F; --warn:#E0A53A; --bad:#EF6B5F; --track:#2B2522; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141110; --surface:#1D1917; --fg:#EFEAE4; --muted:#A79C91; --line:#342D29;
+  --brand:#D0534B; --good:#5CBF7F; --warn:#E0A53A; --bad:#EF6B5F; --track:#2B2522; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:400 15px/1.55 var(--body);margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-block:32px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(28px,5vw,42px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:22px;font-weight:700}
+h3{font-size:16px;font-weight:700}
+.eyebrow{font:600 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+.lede{max-width:68ch;color:var(--muted);margin:0}
+header{display:flex;flex-direction:column;gap:10px;border-bottom:3px solid var(--brand);padding-bottom:20px}
+.meta{font-size:13px;color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.tile{background:var(--surface);border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:6px}
+.tile .lbl{font-size:13px;color:var(--muted)}
+.tile .num{font:700 44px/1 var(--display);font-variant-numeric:tabular-nums}
+.tile .lvl{font-size:13px;font-weight:600}
+.lead-box{background:var(--surface);border-left:4px solid var(--brand);padding:16px 18px;max-width:80ch}
+.lead-box p{margin:0}
+section{display:flex;flex-direction:column;gap:14px}
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 12px/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.id{font-weight:700;color:var(--muted);width:42px}
+td.sc{width:150px}
+.bar{display:flex;align-items:center;gap:8px}
+.bar b{font:700 18px/1 var(--display);width:22px;text-align:right;font-variant-numeric:tabular-nums}
+.bar i{flex:1;height:8px;background:var(--track);position:relative;display:block;min-width:60px}
+.bar i::after{content:"";position:absolute;inset:0 auto 0 0;width:calc(var(--v)*10%);background:var(--c)}
+.hi{color:var(--good)} .mid{color:var(--warn)} .lo{color:var(--bad)}
+.note{font-size:13px;color:var(--muted);max-width:80ch;margin:0}
+ul.plain{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;max-width:80ch}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border:1px solid currentColor}
+footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+</style>
+
+</head><body>
+<div class="wrap">
+<header>
+  <span class="eyebrow">Ogro Steaks · Meta Pixel + GTM + GA4</span>
+  <h1>Auditoria de Pixel Ogro</h1>
+  <p class="lede">Site, LP de São Gonçalo e Cardápio Digital (Databite), testados no ar. Nota de 0 a 10 por parâmetro e nível de maturidade.</p>
+  <span class="meta">Consolidada em 18/11/2026 (fim do dia) · estado auditado: site 07cfc81, GTM v4 · pedido do Matheus · feito pelo Victor com o Claude</span>
+</header>
+
+<section>
+  <div class="tiles">
+    <div class="tile"><span class="lbl">Site + LP de São Gonçalo</span><span class="num hi">7,5</span><span class="lvl">Avançado · nível 3 de 5 (falta só a compra)</span></div>
+    <div class="tile"><span class="lbl">Cardápio Digital (Databite)</span><span class="num lo">1,0</span><span class="lvl">Inexistente · nível 0 de 5</span></div>
+    <div class="tile"><span class="lbl">Geral (site 50% · cardápio 50%)</span><span class="num mid">4,2</span><span class="lvl">Intermediário · nível 2 de 5</span></div>
+  </div>
+  <div class="lead-box"><p>O site e a LP estão bem medidos: nada dispara antes do aceite, o Lead vai ao Meta uma vez por cadastro, com event_id e dados de usuário criptografados, e o GA4 recebe o funil com a unidade identificada. <strong>A venda acontece no cardápio, e lá não existe medição.</strong> Hoje dá para otimizar por <strong>Lead</strong>, mas não por compra: CPA e ROAS reais ainda não são possíveis.</p></div>
+</section>
+
+<section>
+  <h2>A · Site + LP de São Gonçalo <span class="hi">7,5</span></h2>
+  <div class="tbl"><table>
+    <thead><tr><th>#</th><th>Parâmetro</th><th>Nota</th><th>Evidência (no ar)</th><th>Para chegar a 10</th></tr></thead>
+    <tbody>
+      <tr><td class="id">A1</td><td>Instalação</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>GTM v4, GA4 e Pixel 1x por página; versões documentadas</td><td>CAPI fecha o ciclo</td></tr>
+      <tr><td class="id">A2</td><td>Consentimento / LGPD</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>0 envios e 0 cookies de marketing antes do aceite e com "Só o essencial"</td><td>Razão social, CNPJ e encarregado na política</td></tr>
+      <tr><td class="id">A3</td><td>Visita (PageView)</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>1 por página, com consentimento e event_id</td><td>—</td></tr>
+      <tr><td class="id">A4</td><td>Conversão principal: Lead</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Após o n8n confirmar; 1x por cadastro; não repete ao recarregar; evento principal no GA4</td><td>Envio também pelo servidor</td></tr>
+      <tr><td class="id">A5</td><td>Micro-conversões no GA4</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>Bairro, CTA, formulário, clique para pedir, burger e raspadinha, com 8 dimensões</td><td>view_item dos burgers no GA4</td></tr>
+      <tr><td class="id">A6</td><td>Eventos de navegação no Meta</td><td class="sc"><span class="bar" style="--v:7;--c:var(--good)"><b>7</b><i></i></span></td><td>ViewContent no cardápio e ao escolher burger; CliquePedido</td><td>Padronizar o clique de pedido quando o checkout for medido</td></tr>
+      <tr><td class="id">A7</td><td>Correspondência avançada</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>Lead com e-mail, telefone, nome, cidade, UF e país em hash SHA-256</td><td>Conferir o EMQ no Meta</td></tr>
+      <tr><td class="id">A8</td><td>CAPI (servidor)</td><td class="sc"><span class="bar" style="--v:0;--c:var(--bad)"><b>0</b><i></i></span></td><td>Não está no ar; pronta no PR #19, falta token do Meta + n8n</td><td>Publicar a CAPI do Lead</td></tr>
+      <tr><td class="id">A9</td><td>Deduplicação</td><td class="sc"><span class="bar" style="--v:6;--c:var(--warn)"><b>6</b><i></i></span></td><td>event_id em PageView, ViewContent e Lead</td><td>Mesmo event_id na CAPI</td></tr>
+      <tr><td class="id">A10</td><td>Identificação da unidade</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>store_id em todos os eventos da LP; dimensão no GA4</td><td>store_id no site institucional</td></tr>
+      <tr><td class="id">A11</td><td>UTMs e atribuição</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>UTM e fbclid chegam ao GA4 e até a URL do cardápio</td><td>—</td></tr>
+      <tr><td class="id">A12</td><td>Entre domínios</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Link do cardápio com _gl e UTM</td><td>—</td></tr>
+      <tr><td class="id">A13</td><td>Ruído</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Sem eventos automáticos do Meta</td><td>—</td></tr>
+      <tr><td class="id">A14</td><td>Configuração do GA4</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>14 meses, 8 dimensões, eventos principais, filtro de desenvolvedor</td><td>Público de remarketing</td></tr>
+      <tr><td class="id">A15</td><td>Governança e acessos</td><td class="sc"><span class="bar" style="--v:4;--c:var(--warn)"><b>4</b><i></i></span></td><td>Ativos na conta do cliente e versões documentadas; há acessos de terceiros a revisar e acesso do time ao Meta pendente</td><td>Revisar acessos; 2FA para quem opera</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>B · Cardápio Digital (Databite) <span class="lo">1,0</span></h2>
+  <div class="tbl"><table>
+    <thead><tr><th>#</th><th>Parâmetro</th><th>Nota</th><th>Evidência (no ar)</th><th>Para chegar a 10</th></tr></thead>
+    <tbody>
+      <tr><td class="id">B1</td><td>Tags instaladas</td><td class="sc"><span class="bar" style="--v:0;--c:var(--bad)"><b>0</b><i></i></span></td><td>Sem GTM, dataLayer, Pixel ou GA4</td><td>Ligar o GTM na loja (configuração do Databite)</td></tr>
+      <tr><td class="id">B2</td><td>Funil de e-commerce</td><td class="sc"><span class="bar" style="--v:2;--c:var(--bad)"><b>2</b><i></i></span></td><td>Pronto no código do Databite; 9 tags pausadas no GTM</td><td>Ligar o GTM e despausar</td></tr>
+      <tr><td class="id">B3</td><td>Compra validada</td><td class="sc"><span class="bar" style="--v:0;--c:var(--bad)"><b>0</b><i></i></span></td><td>Não existe</td><td>Pedido real: valor, BRL, transaction_id</td></tr>
+      <tr><td class="id">B4</td><td>Consentimento no cardápio</td><td class="sc"><span class="bar" style="--v:0;--c:var(--bad)"><b>0</b><i></i></span></td><td>Sem aviso de cookies</td><td>Banner com Consent Mode v2</td></tr>
+      <tr><td class="id">B5</td><td>Atribuição até o pedido</td><td class="sc"><span class="bar" style="--v:3;--c:var(--bad)"><b>3</b><i></i></span></td><td>UTM, _gl e fbclid chegam à URL, mas nada lê</td><td>Com o GTM ligado, a sessão segue</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note"><strong>C · Meta (não auditável, fora da média):</strong> EMQ e verificação de domínio dependem do Gerenciador de Eventos, ainda sem acesso do time. A conversão "Lead SG" não faz falta hoje: só a LP de SG manda Lead.</p>
+</section>
+
+<section>
+  <h2>Plano</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Prioridade</th><th>Ação</th><th>Quem</th><th>Efeito</th></tr></thead>
+    <tbody>
+      <tr><td><strong class="lo">P0</strong> · até 03/12</td><td>GTM na loja SG + aviso de cookies no Databite + despausar tags + pedido real</td><td>João (Databite) + Victor</td><td>Cardápio 1,0 → ~7,6 · Geral 4,2 → ~7,5</td></tr>
+      <tr><td><strong class="mid">P1</strong></td><td>CAPI do Lead: token + 2 nós no n8n + publicar o PR #19</td><td>Matheus + Victor</td><td>Site+LP 7,5 → ~8,2</td></tr>
+      <tr><td><strong class="mid">P1</strong></td><td>Revisão dos acessos de terceiros</td><td>Manu</td><td>A15 4 → 8</td></tr>
+      <tr><td><strong>P2</strong></td><td>Dados legais na política; view_item no GA4; público de remarketing</td><td>Igor / Victor</td><td>A2, A5, A14 → 10</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Histórico do dia</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Momento</th><th>Site + LP</th><th>Cardápio</th><th>Geral</th></tr></thead>
+    <tbody>
+      <tr><td>1ª rodada (manhã)</td><td>6,4</td><td>1,0</td><td>3,7</td></tr>
+      <tr><td>Reauditoria (tarde)</td><td>6,4</td><td>1,0</td><td>3,7</td></tr>
+      <tr><td><strong>Depois da publicação do PR #18</strong></td><td><strong class="hi">7,5</strong></td><td>1,0</td><td><strong class="mid">4,2</strong></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h3>Como foi medido</h3>
+  <ul class="plain">
+    <li>Chrome automático no site no ar, simulando vinda de anúncio do Meta (UTM + fbclid). Cadastro interceptado e envios ao Meta bloqueados e registrados, inclusive POST.</li>
+    <li>Cookies antes e depois do aceite e cada envio a GTM, GA4, Meta e Clarity, fase por fase, até a chegada ao cardápio.</li>
+    <li>Configuração do GTM (v4), da tag do Google e do GA4; código do cardápio Databite.</li>
+    <li>Régua: 0 não existe · 1–3 falha grave · 4–6 com lacunas · 7–8 bom · 9–10 referência. Método: skill <strong>auditoria-pixel</strong> v1.1.</li>
+  </ul>
+</section>
+
+<footer>Feito por Victor Pusanovsky Okada · 18/11/2026</footer>
+</div>
+</body></html>
