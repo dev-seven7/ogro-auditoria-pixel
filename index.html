@@ -58,16 +58,16 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
   <span class="eyebrow">Ogro Steaks · Meta Pixel + GTM + GA4</span>
   <h1>Auditoria de Pixel Ogro</h1>
   <p class="lede">Site, LP de São Gonçalo e Cardápio Digital (Databite), testados no ar. Nota de 0 a 10 por parâmetro e nível de maturidade.</p>
-  <span class="meta">7ª rodada · 20/11/2026 · site 2eca2f9, GTM do site v4, GTM do cardápio GTM-KHFLQCH4 v2 nas 14 lojas, Databite com aviso de cookies próprio · pedido do Matheus · feito pelo Victor com o Claude</span>
+  <span class="meta">8ª rodada · 20/11/2026 · site 2eca2f9, GTM do site v4, GTM do cardápio GTM-KHFLQCH4 v3 nas 14 lojas, consentimento único pelo aviso do Databite · pedido do Matheus · feito pelo Victor com o Claude</span>
 </header>
 
 <section>
   <div class="tiles">
     <div class="tile"><span class="lbl">Site + LP de São Gonçalo</span><span class="num hi">7,4</span><span class="lvl">Avançado · nível 3 de 5</span></div>
-    <div class="tile"><span class="lbl">Cardápio Digital (Databite)</span><span class="num mid">6,2</span><span class="lvl">Intermediário · aviso de cookies duplo e compra não validada (era 6,4)</span></div>
-    <div class="tile"><span class="lbl">Geral (site 50% · cardápio 50%)</span><span class="num mid">6,8</span><span class="lvl">Intermediário · nível 2→3 (era 6,9)</span></div>
+    <div class="tile"><span class="lbl">Cardápio Digital (Databite)</span><span class="num mid">6,6</span><span class="lvl">Intermediário · compra ainda não validada (era 6,2)</span></div>
+    <div class="tile"><span class="lbl">Geral (site 50% · cardápio 50%)</span><span class="num hi">7,0</span><span class="lvl">Avançado · nível 3 de 5 (era 6,8)</span></div>
   </div>
-  <div class="lead-box"><p>O site e a LP estão bem medidos: nada dispara antes do aceite, o Lead vai ao Meta uma vez por cadastro, com event_id e dados de usuário criptografados, e o GA4 recebe o funil com a unidade identificada. <strong>20/11:</strong> os ajustes de consentimento pedidos ao Databite (políticas separadas e dois checkboxes no cadastro) ainda não estão no ar; o rastreamento segue funcionando igual. <strong>Desde 19/11:</strong> o Databite passou a exibir um aviso de cookies próprio, e o GTM do cardápio só carrega depois do "Permitir". Em seguida aparece o aviso do Ogro, e o cliente precisa aceitar duas vezes. Só depois do segundo aceite visita e produto chegam ao GA4 e ao Meta. A compra ainda não foi validada: o carrinho exige cliente logado.</p></div>
+  <div class="lead-box"><p>O site e a LP estão bem medidos: nada dispara antes do aceite, o Lead vai ao Meta uma vez por cadastro, com event_id e dados de usuário criptografados, e o GA4 recebe o funil com a unidade identificada. <strong>20/11:</strong> o aviso duplo do cardápio foi removido. Agora vale só o aviso de cookies do Databite: quem clica em Permitir já é medido no GA4 e no Meta, e quem recusa não é medido. Falta validar a compra com um pedido real (o carrinho exige cliente logado). No site, a separação do aceite de marketing e o ajuste do GA4 na LP estão prontos no PR #25, aguardando publicação.</p></div>
 </section>
 
 <section>
@@ -95,14 +95,14 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
 </section>
 
 <section>
-  <h2>B · Cardápio Digital (Databite) <span class="mid">6,2</span></h2>
+  <h2>B · Cardápio Digital (Databite) <span class="mid">6,6</span></h2>
   <div class="tbl"><table>
     <thead><tr><th>#</th><th>Parâmetro</th><th>Nota</th><th>Evidência (no ar)</th><th>Para chegar a 10</th></tr></thead>
     <tbody>
       <tr><td class="id">B1</td><td>Tags instaladas</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>GTM do cardápio ativo nas 13 lojas públicas + SG no painel; GA4 e Pixel disparando</td><td>Testar SG quando abrir</td></tr>
       <tr><td class="id">B2</td><td>Funil de e-commerce</td><td class="sc"><span class="bar" style="--v:6;--c:var(--warn)"><b>6</b><i></i></span></td><td>No ar: GA4 view_item e page_view; Meta PageView e ViewContent (R$ 73,90). Carrinho exige login de cliente</td><td>Testar carrinho e checkout com conta de cliente</td></tr>
       <tr><td class="id">B3</td><td>Compra validada</td><td class="sc"><span class="bar" style="--v:3;--c:var(--bad)"><b>3</b><i></i></span></td><td>Tags de compra ativas; sem pedido de teste</td><td>Pedido real: valor, BRL, número do pedido</td></tr>
-      <tr><td class="id">B4</td><td>Consentimento no cardápio</td><td class="sc"><span class="bar" style="--v:7;--c:var(--good)"><b>7</b><i></i></span></td><td>Correto (nada antes do aceite), mas o cliente aceita duas vezes: aviso do Databite + aviso do Ogro</td><td>Usar só o aviso do Databite</td></tr>
+      <tr><td class="id">B4</td><td>Consentimento no cardápio</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Aviso único do Databite: Recusar = nada é enviado; Permitir = GA4 e Meta recebem na hora (aviso duplo removido em 20/11)</td><td>Política do cardápio publicada (PR #20)</td></tr>
       <tr><td class="id">B5</td><td>Atribuição até o pedido</td><td class="sc"><span class="bar" style="--v:6;--c:var(--warn)"><b>6</b><i></i></span></td><td>Mesmo GA4 com domínios ligados; fbclid chega à URL; página geral de lojas sem GTM</td><td>Links do site direto para a loja</td></tr>
     </tbody>
   </table></div>
@@ -114,7 +114,6 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
   <div class="tbl"><table>
     <thead><tr><th>Prioridade</th><th>Ação</th><th>Quem</th><th>Efeito</th></tr></thead>
     <tbody>
-      <tr><td><strong class="lo">P0</strong></td><td>Tirar o aviso duplo: usar o "Permitir" do Databite como consentimento no GTM do cardápio</td><td>Victor</td><td>B4 7 → 9 · mais dados medidos</td></tr>
       <tr><td><strong class="lo">P0</strong></td><td>Pedido real de teste numa loja (conta de cliente) para validar carrinho, checkout e compra</td><td>Victor + loja</td><td>Cardápio 6,4 → ~8,4 · Geral → ~7,9</td></tr>
       <tr><td><strong class="mid">P1</strong></td><td>CAPI do Lead: token + 2 nós no n8n + publicar o PR #19</td><td>Matheus + Victor</td><td>Site+LP 7,5 → ~8,2</td></tr>
       <tr><td><strong class="mid">P1</strong></td><td>Revisão dos acessos de terceiros</td><td>Manu</td><td>A15 4 → 8</td></tr>
@@ -134,7 +133,8 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
       <tr><td>GTM do site no Databite (sem envio)</td><td>7,5</td><td>2,6</td><td>5,0</td></tr>
       <tr><td>GTM próprio do cardápio nas 14 lojas</td><td>7,4</td><td>6,4</td><td>6,9</td></tr>
       <tr><td>Databite com aviso próprio (aviso duplo)</td><td>7,4</td><td>6,2</td><td>6,8</td></tr>
-      <tr><td><strong>7ª rodada (20/11)</strong></td><td><strong class="hi">7,4</strong></td><td><strong class="mid">6,2</strong></td><td><strong class="mid">6,8</strong></td></tr>
+      <tr><td>7ª rodada (20/11, manhã)</td><td>7,4</td><td>6,2</td><td>6,8</td></tr>
+      <tr><td><strong>Aviso único no cardápio (20/11)</strong></td><td><strong class="hi">7,4</strong></td><td><strong class="mid">6,6</strong></td><td><strong class="hi">7,0</strong></td></tr>
     </tbody>
   </table></div>
 </section>
