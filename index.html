@@ -58,7 +58,7 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
   <span class="eyebrow">Ogro Steaks · Meta Pixel + GTM + GA4</span>
   <h1>Auditoria de Pixel Ogro</h1>
   <p class="lede">Site, LP de São Gonçalo e Cardápio Digital (Databite), testados no ar. Nota de 0 a 10 por parâmetro e nível de maturidade.</p>
-  <span class="meta">6ª rodada · 19/11/2026 · site 07cfc81, GTM do site v4, GTM do cardápio GTM-KHFLQCH4 v2 nas 14 lojas, Databite com aviso de cookies próprio · pedido do Matheus · feito pelo Victor com o Claude</span>
+  <span class="meta">7ª rodada · 20/11/2026 · site 2eca2f9, GTM do site v4, GTM do cardápio GTM-KHFLQCH4 v2 nas 14 lojas, Databite com aviso de cookies próprio · pedido do Matheus · feito pelo Victor com o Claude</span>
 </header>
 
 <section>
@@ -67,7 +67,7 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
     <div class="tile"><span class="lbl">Cardápio Digital (Databite)</span><span class="num mid">6,2</span><span class="lvl">Intermediário · aviso de cookies duplo e compra não validada (era 6,4)</span></div>
     <div class="tile"><span class="lbl">Geral (site 50% · cardápio 50%)</span><span class="num mid">6,8</span><span class="lvl">Intermediário · nível 2→3 (era 6,9)</span></div>
   </div>
-  <div class="lead-box"><p>O site e a LP estão bem medidos: nada dispara antes do aceite, o Lead vai ao Meta uma vez por cadastro, com event_id e dados de usuário criptografados, e o GA4 recebe o funil com a unidade identificada. <strong>Novo (19/11):</strong> o Databite passou a exibir um aviso de cookies próprio, e o GTM do cardápio só carrega depois do "Permitir". Em seguida aparece o aviso do Ogro, e o cliente precisa aceitar duas vezes. Só depois do segundo aceite visita e produto chegam ao GA4 e ao Meta. A compra ainda não foi validada: o carrinho exige cliente logado.</p></div>
+  <div class="lead-box"><p>O site e a LP estão bem medidos: nada dispara antes do aceite, o Lead vai ao Meta uma vez por cadastro, com event_id e dados de usuário criptografados, e o GA4 recebe o funil com a unidade identificada. <strong>20/11:</strong> os ajustes de consentimento pedidos ao Databite (políticas separadas e dois checkboxes no cadastro) ainda não estão no ar; o rastreamento segue funcionando igual. <strong>Desde 19/11:</strong> o Databite passou a exibir um aviso de cookies próprio, e o GTM do cardápio só carrega depois do "Permitir". Em seguida aparece o aviso do Ogro, e o cliente precisa aceitar duas vezes. Só depois do segundo aceite visita e produto chegam ao GA4 e ao Meta. A compra ainda não foi validada: o carrinho exige cliente logado.</p></div>
 </section>
 
 <section>
@@ -76,7 +76,7 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
     <thead><tr><th>#</th><th>Parâmetro</th><th>Nota</th><th>Evidência (no ar)</th><th>Para chegar a 10</th></tr></thead>
     <tbody>
       <tr><td class="id">A1</td><td>Instalação</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>GTM v4, GA4 e Pixel 1x por página; versões documentadas</td><td>CAPI fecha o ciclo</td></tr>
-      <tr><td class="id">A2</td><td>Consentimento / LGPD</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>0 envios e 0 cookies de marketing antes do aceite e com "Só o essencial"</td><td>Razão social, CNPJ e encarregado na política</td></tr>
+      <tr><td class="id">A2</td><td>Consentimento / LGPD</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>0 envios antes do aceite e com "Só o essencial". Mas o formulário da LP junta cupom e marketing num só aceite</td><td>Separar o aceite de marketing do cupom; dados legais na política</td></tr>
       <tr><td class="id">A3</td><td>Visita (PageView)</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>1 por página com consentimento; em 1 de 3 testes o GA4 perdeu page_view e bairro_check da LP (redirecionamento rápido para o cupom)</td><td>Segurar o redirecionamento ~300 ms</td></tr>
       <tr><td class="id">A4</td><td>Conversão principal: Lead</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Após o n8n confirmar; 1x por cadastro; não repete ao recarregar; evento principal no GA4</td><td>Envio também pelo servidor</td></tr>
       <tr><td class="id">A5</td><td>Micro-conversões no GA4</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>Bairro, CTA, formulário, clique para pedir, burger e raspadinha, com 8 dimensões</td><td>view_item dos burgers no GA4</td></tr>
@@ -133,7 +133,8 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
       <tr><td>Depois da publicação do PR #18</td><td>7,5</td><td>1,0</td><td>4,2</td></tr>
       <tr><td>GTM do site no Databite (sem envio)</td><td>7,5</td><td>2,6</td><td>5,0</td></tr>
       <tr><td>GTM próprio do cardápio nas 14 lojas</td><td>7,4</td><td>6,4</td><td>6,9</td></tr>
-      <tr><td><strong>Databite com aviso próprio (aviso duplo)</strong></td><td><strong class="hi">7,4</strong></td><td><strong class="mid">6,2</strong></td><td><strong class="mid">6,8</strong></td></tr>
+      <tr><td>Databite com aviso próprio (aviso duplo)</td><td>7,4</td><td>6,2</td><td>6,8</td></tr>
+      <tr><td><strong>7ª rodada (20/11)</strong></td><td><strong class="hi">7,4</strong></td><td><strong class="mid">6,2</strong></td><td><strong class="mid">6,8</strong></td></tr>
     </tbody>
   </table></div>
 </section>
