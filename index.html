@@ -58,55 +58,89 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
   <span class="eyebrow">Ogro Steaks · Meta Pixel + GTM + GA4</span>
   <h1>Auditoria de Pixel Ogro</h1>
   <p class="lede">Site, LP de São Gonçalo e Cardápio Digital (Databite), testados no ar. Nota de 0 a 10 por parâmetro e nível de maturidade.</p>
-  <span class="meta">8ª rodada · 20/11/2026 · site 2eca2f9, GTM do site v4, GTM do cardápio GTM-KHFLQCH4 v3 nas 14 lojas, consentimento único pelo aviso do Databite · pedido do Matheus · feito pelo Victor com o Claude</span>
+  <span class="meta">9ª rodada · 25/11/2026 · primeira com acesso ao Gerenciador de Eventos do Meta · site 6550a18 (PR #26), GTM do site v4, GTM do cardápio GTM-KHFLQCH4 v3 nas 14 lojas · feito pelo Victor com o Claude</span>
 </header>
 
 <section>
   <div class="tiles">
-    <div class="tile"><span class="lbl">Site + LP de São Gonçalo</span><span class="num hi">7,4</span><span class="lvl">Avançado · nível 3 de 5</span></div>
-    <div class="tile"><span class="lbl">Cardápio Digital (Databite)</span><span class="num mid">6,6</span><span class="lvl">Intermediário · compra ainda não validada (era 6,2)</span></div>
-    <div class="tile"><span class="lbl">Geral (site 50% · cardápio 50%)</span><span class="num hi">7,0</span><span class="lvl">Avançado · nível 3 de 5 (era 6,8)</span></div>
+    <div class="tile"><span class="lbl">Site + LP de São Gonçalo</span><span class="num hi">7,5</span><span class="lvl">Avançado · nível 3 de 5 (era 7,3)</span></div>
+    <div class="tile"><span class="lbl">Cardápio Digital (Databite)</span><span class="num hi">7,6</span><span class="lvl">Avançado · nível 3 de 5 (era 6,6)</span></div>
+    <div class="tile"><span class="lbl">Geral (site 50% · cardápio 50%)</span><span class="num hi">7,6</span><span class="lvl">Avançado · nível 3 de 5 (era 7,0)</span></div>
   </div>
-  <div class="lead-box"><p>O site e a LP estão bem medidos: nada dispara antes do aceite, o Lead vai ao Meta uma vez por cadastro, com event_id e dados de usuário criptografados, e o GA4 recebe o funil com a unidade identificada. <strong>20/11:</strong> o aviso duplo do cardápio foi removido. Agora vale só o aviso de cookies do Databite: quem clica em Permitir já é medido no GA4 e no Meta, e quem recusa não é medido. Falta validar a compra com um pedido real (o carrinho exige cliente logado). No site, a separação do aceite de marketing e o ajuste do GA4 na LP estão prontos no PR #25, aguardando publicação.</p></div>
+  <div class="lead-box"><p><strong>25/11: o time entrou no Gerenciador de Eventos do Meta.</strong> Com isso deu para ver o que o Meta recebe de verdade. O Lead da LP de SG <strong>não chegava</strong> ao Meta e foi corrigido e publicado hoje. O token da CAPI foi criado e testado. Só os domínios do Ogro podem mandar eventos para o Pixel. E o cardápio já manda compras com valor e moeda: 21 desde 18/11. Falta a CAPI do Lead entrar em produção (n8n) e conferir as compras com os pedidos do Databite.</p></div>
+</section>
+
+<section>
+  <h2>O que melhorou nesta rodada</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>#</th><th>Parâmetro</th><th>Antes</th><th>Agora</th><th>O que mudou (evidência)</th></tr></thead>
+    <tbody>
+      <tr><td class="id">A4</td><td>Lead no Meta</td><td>9*</td><td class="hi"><strong>9</strong></td><td>*A nota anterior não se confirmava no ar: o GTM chega antes do aviso de cookies e a tag do Lead rodava sem Pixel. Corrigido no PR #26. Em "Testar eventos", o cadastro das 13h06 (antes) só tem PageView, e o das 13h21 (depois) tem <strong>Lead · Navegador · Processado</strong> com event_id</td></tr>
+      <tr><td class="id">A8</td><td>CAPI (servidor)</td><td class="lo">0</td><td class="mid"><strong>2</strong></td><td>Token da Conversions API criado e guardado no 1Password. Lead de teste pelo servidor <strong>Processado</strong> no Meta. Ainda não envia leads reais (falta o n8n)</td></tr>
+      <tr><td class="id">A15</td><td>Governança e acessos</td><td class="mid">4</td><td class="mid"><strong>5</strong></td><td>Time com acesso ao Meta, com 2FA. Lista de permissões de domínio criada. Acessos de terceiros ainda a revisar</td></tr>
+      <tr><td class="id">B2</td><td>Funil de e-commerce</td><td class="mid">6</td><td class="hi"><strong>8</strong></td><td>O Meta recebeu o funil inteiro do cardápio desde 18/11: ViewContent 163 · AddToCart 60 · InitiateCheckout 24 · Purchase 21</td></tr>
+      <tr><td class="id">B3</td><td>Compra validada</td><td class="lo">3</td><td class="mid"><strong>6</strong></td><td>21 compras reais chegaram ao Meta com value e currency. Falta conferir valor e número com os pedidos do Databite</td></tr>
+      <tr><td class="id">C</td><td>Meta (Gerenciador de Eventos)</td><td>não auditável</td><td class="hi"><strong>8,5</strong></td><td>Agora auditável: conta de anúncios ligada, domínios na lista de permissões, eventos automáticos desligados. Fica fora da média geral para comparar com as rodadas anteriores</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Correção de conta: o título do bloco A na 8ª rodada mostrava 7,5 e o resumo 7,4, mas a soma das 15 notas dava 7,3 (110 ÷ 15). Nesta rodada: A = 113 ÷ 15 = 7,5 · B = 38 ÷ 5 = 7,6 · geral = (7,53 + 7,6) ÷ 2 = 7,6.</p>
 </section>
 
 <section>
   <h2>A · Site + LP de São Gonçalo <span class="hi">7,5</span></h2>
+  <!-- 9ª rodada: 8+8+8+9+8+7+8+2+6+8+9+9+9+9+5 = 113 / 15 = 7,53 -->
   <div class="tbl"><table>
     <thead><tr><th>#</th><th>Parâmetro</th><th>Nota</th><th>Evidência (no ar)</th><th>Para chegar a 10</th></tr></thead>
     <tbody>
       <tr><td class="id">A1</td><td>Instalação</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>GTM v4, GA4 e Pixel 1x por página; versões documentadas</td><td>CAPI fecha o ciclo</td></tr>
       <tr><td class="id">A2</td><td>Consentimento / LGPD</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>0 envios antes do aceite e com "Só o essencial". Mas o formulário da LP junta cupom e marketing num só aceite</td><td>Separar o aceite de marketing do cupom; dados legais na política</td></tr>
       <tr><td class="id">A3</td><td>Visita (PageView)</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>1 por página com consentimento; em 1 de 3 testes o GA4 perdeu page_view e bairro_check da LP (redirecionamento rápido para o cupom)</td><td>Segurar o redirecionamento ~300 ms</td></tr>
-      <tr><td class="id">A4</td><td>Conversão principal: Lead</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Após o n8n confirmar; 1x por cadastro; não repete ao recarregar; evento principal no GA4</td><td>Envio também pelo servidor</td></tr>
+      <tr><td class="id">A4</td><td>Conversão principal: Lead</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Após o n8n confirmar; 1x por cadastro; não repete ao recarregar; evento principal no GA4. <strong>Confirmado no Meta em 25/11</strong> (Testar eventos: Lead · Navegador · Processado, depois do PR #26)</td><td>Envio também pelo servidor</td></tr>
       <tr><td class="id">A5</td><td>Micro-conversões no GA4</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>Bairro, CTA, formulário, clique para pedir, burger e raspadinha, com 8 dimensões</td><td>view_item dos burgers no GA4</td></tr>
       <tr><td class="id">A6</td><td>Eventos de navegação no Meta</td><td class="sc"><span class="bar" style="--v:7;--c:var(--good)"><b>7</b><i></i></span></td><td>ViewContent no cardápio e ao escolher burger; CliquePedido</td><td>Padronizar o clique de pedido quando o checkout for medido</td></tr>
       <tr><td class="id">A7</td><td>Correspondência avançada</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>Lead com e-mail, telefone, nome, cidade, UF e país em hash SHA-256</td><td>Conferir o EMQ no Meta</td></tr>
-      <tr><td class="id">A8</td><td>CAPI (servidor)</td><td class="sc"><span class="bar" style="--v:0;--c:var(--bad)"><b>0</b><i></i></span></td><td>Não está no ar; pronta no PR #19, falta token do Meta + n8n</td><td>Publicar a CAPI do Lead</td></tr>
-      <tr><td class="id">A9</td><td>Deduplicação</td><td class="sc"><span class="bar" style="--v:6;--c:var(--warn)"><b>6</b><i></i></span></td><td>event_id em PageView, ViewContent e Lead</td><td>Mesmo event_id na CAPI</td></tr>
+      <tr><td class="id">A8</td><td>CAPI (servidor)</td><td class="sc"><span class="bar" style="--v:2;--c:var(--bad)"><b>2</b><i></i></span></td><td>Token criado (1Password) e Lead de teste pelo servidor Processado no Meta; nenhum lead real ainda vai pelo servidor</td><td>2 nós no n8n + publicar o PR #19</td></tr>
+      <tr><td class="id">A9</td><td>Deduplicação</td><td class="sc"><span class="bar" style="--v:6;--c:var(--warn)"><b>6</b><i></i></span></td><td>event_id em PageView, ViewContent e Lead (padrão ogro_sg_lead_…, visto no Meta)</td><td>Mesmo event_id na CAPI</td></tr>
       <tr><td class="id">A10</td><td>Identificação da unidade</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>store_id em todos os eventos da LP; dimensão no GA4</td><td>store_id no site institucional</td></tr>
       <tr><td class="id">A11</td><td>UTMs e atribuição</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>UTM e fbclid chegam ao GA4 e até a URL do cardápio</td><td>—</td></tr>
       <tr><td class="id">A12</td><td>Entre domínios</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Link do cardápio com _gl e UTM</td><td>—</td></tr>
-      <tr><td class="id">A13</td><td>Ruído</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Sem eventos automáticos do Meta</td><td>—</td></tr>
+      <tr><td class="id">A13</td><td>Ruído</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Sem eventos automáticos do Meta (desligados no Gerenciador); só domínios do Ogro na lista de permissões</td><td>—</td></tr>
       <tr><td class="id">A14</td><td>Configuração do GA4</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>14 meses, 8 dimensões, eventos principais, filtro de desenvolvedor</td><td>Público de remarketing</td></tr>
-      <tr><td class="id">A15</td><td>Governança e acessos</td><td class="sc"><span class="bar" style="--v:4;--c:var(--warn)"><b>4</b><i></i></span></td><td>Ativos na conta do cliente e versões documentadas; há acessos de terceiros a revisar e acesso do time ao Meta pendente</td><td>Revisar acessos; 2FA para quem opera</td></tr>
+      <tr><td class="id">A15</td><td>Governança e acessos</td><td class="sc"><span class="bar" style="--v:5;--c:var(--warn)"><b>5</b><i></i></span></td><td>Ativos na conta do cliente e versões documentadas; time com acesso ao Meta (2FA) desde 25/11; token da CAPI só no cofre; acessos de terceiros ainda a revisar</td><td>Revisar acessos de terceiros</td></tr>
     </tbody>
   </table></div>
 </section>
 
 <section>
-  <h2>B · Cardápio Digital (Databite) <span class="mid">6,6</span></h2>
+  <h2>B · Cardápio Digital (Databite) <span class="hi">7,6</span></h2>
+  <!-- 9ª rodada: 9+8+6+9+6 = 38 / 5 = 7,6 -->
   <div class="tbl"><table>
     <thead><tr><th>#</th><th>Parâmetro</th><th>Nota</th><th>Evidência (no ar)</th><th>Para chegar a 10</th></tr></thead>
     <tbody>
       <tr><td class="id">B1</td><td>Tags instaladas</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>GTM do cardápio ativo nas 13 lojas públicas + SG no painel; GA4 e Pixel disparando</td><td>Testar SG quando abrir</td></tr>
-      <tr><td class="id">B2</td><td>Funil de e-commerce</td><td class="sc"><span class="bar" style="--v:6;--c:var(--warn)"><b>6</b><i></i></span></td><td>No ar: GA4 view_item e page_view; Meta PageView e ViewContent (R$ 73,90). Carrinho exige login de cliente</td><td>Testar carrinho e checkout com conta de cliente</td></tr>
-      <tr><td class="id">B3</td><td>Compra validada</td><td class="sc"><span class="bar" style="--v:3;--c:var(--bad)"><b>3</b><i></i></span></td><td>Tags de compra ativas; sem pedido de teste</td><td>Pedido real: valor, BRL, número do pedido</td></tr>
+      <tr><td class="id">B2</td><td>Funil de e-commerce</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>Meta recebeu o funil inteiro do cardápio desde 18/11: ViewContent 163 · AddToCart 60 · InitiateCheckout 24 · Purchase 21 (AddToCart e Purchase com value e currency)</td><td>Conferir o mesmo funil no GA4 (add_to_cart, begin_checkout, purchase)</td></tr>
+      <tr><td class="id">B3</td><td>Compra validada</td><td class="sc"><span class="bar" style="--v:6;--c:var(--warn)"><b>6</b><i></i></span></td><td>21 compras reais no Meta com value e currency (18 a 24/11), domínio do cardápio</td><td>Cruzar com os pedidos do Databite: valor depois do desconto, BRL, número do pedido, sem duplicar</td></tr>
       <tr><td class="id">B4</td><td>Consentimento no cardápio</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Aviso único do Databite: Recusar = nada é enviado; Permitir = GA4 e Meta recebem na hora (aviso duplo removido em 20/11)</td><td>Política do cardápio publicada (PR #20)</td></tr>
       <tr><td class="id">B5</td><td>Atribuição até o pedido</td><td class="sc"><span class="bar" style="--v:6;--c:var(--warn)"><b>6</b><i></i></span></td><td>Mesmo GA4 com domínios ligados; fbclid chega à URL; página geral de lojas sem GTM</td><td>Links do site direto para a loja</td></tr>
     </tbody>
   </table></div>
-  <p class="note"><strong>C · Meta (não auditável, fora da média):</strong> EMQ e verificação de domínio dependem do Gerenciador de Eventos, ainda sem acesso do time. A conversão "Lead SG" não faz falta hoje: só a LP de SG manda Lead.</p>
+</section>
+
+<section>
+  <h2>C · Meta, Gerenciador de Eventos <span class="hi">8,5</span></h2>
+  <!-- 9+9+9+7 = 34 / 4 = 8,5 (C5 e C6 não auditáveis, fora da média) -->
+  <div class="tbl"><table>
+    <thead><tr><th>#</th><th>Parâmetro</th><th>Nota</th><th>Evidência (25/11)</th><th>Para chegar a 10</th></tr></thead>
+    <tbody>
+      <tr><td class="id">C1</td><td>Conjunto de dados e conta de anúncios</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>PIXEL7 - Ogro Steaks (4736647279900651), dono: Ogro Steaks; compartilhado com a CA7 - Ogro Steaks</td><td>Escolher a categoria do conjunto (hoje "Nenhuma")</td></tr>
+      <tr><td class="id">C2</td><td>Domínios (lista de permissões)</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Criada em 25/11: ogrosteaks.com.br e cardapio-digital-databite.web.app, com subdomínios. Diagnóstico zerado</td><td>Tirar o demo.ogrosteaks.com.br, que entra junto como subdomínio</td></tr>
+      <tr><td class="id">C3</td><td>Eventos automáticos</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Eventos automáticos e rastreamento sem código desligados</td><td>—</td></tr>
+      <tr><td class="id">C4</td><td>Correspondência avançada</td><td class="sc"><span class="bar" style="--v:7;--c:var(--good)"><b>7</b><i></i></span></td><td>Manual: 75% dos PageView já levam dados do cliente em hash. A automática está desligada</td><td>Avaliar ligar a automática no cardápio</td></tr>
+      <tr><td class="id">C5</td><td>EMQ (qualidade da correspondência)</td><td class="sc">—</td><td>Não aparece na tela do conjunto: não auditável</td><td>Ler o EMQ de Lead e Purchase quando o Meta mostrar</td></tr>
+      <tr><td class="id">C6</td><td>Domínio verificado no Business</td><td class="sc">—</td><td>Não conferido nesta rodada: não auditável</td><td>Verificar ogrosteaks.com.br no Gerenciador de Negócios</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">O bloco C fica fora da média geral (site 50% + cardápio 50%) para a comparação com as rodadas anteriores continuar valendo. A contagem da Visão geral do Gerenciador atrasa horas; a prova de evento é a aba "Testar eventos".</p>
 </section>
 
 <section>
@@ -114,16 +148,17 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
   <div class="tbl"><table>
     <thead><tr><th>Prioridade</th><th>Ação</th><th>Quem</th><th>Efeito</th></tr></thead>
     <tbody>
-      <tr><td><strong class="lo">P0</strong></td><td>Pedido real de teste numa loja (conta de cliente) para validar carrinho, checkout e compra</td><td>Victor + loja</td><td>Cardápio 6,4 → ~8,4 · Geral → ~7,9</td></tr>
-      <tr><td><strong class="mid">P1</strong></td><td>CAPI do Lead: token + 2 nós no n8n + publicar o PR #19</td><td>Matheus + Victor</td><td>Site+LP 7,5 → ~8,2</td></tr>
-      <tr><td><strong class="mid">P1</strong></td><td>Revisão dos acessos de terceiros</td><td>Manu</td><td>A15 4 → 8</td></tr>
-      <tr><td><strong>P2</strong></td><td>Dados legais na política; view_item no GA4; público de remarketing</td><td>Igor / Victor</td><td>A2, A5, A14 → 10</td></tr>
+      <tr><td><strong class="lo">P0</strong></td><td>CAPI do Lead em produção: 2 nós no n8n lendo o token do 1Password, teste com test_event_code, publicar o PR #19</td><td>Matheus + Victor</td><td>A8 2 → 9 · A9 6 → 9 · Site+LP 7,5 → ~8,2</td></tr>
+      <tr><td><strong class="lo">P0</strong></td><td>Cruzar as 21 compras do Meta com os pedidos do Databite (valor, desconto, número)</td><td>Victor + loja</td><td>B3 6 → 9 · Cardápio 7,6 → ~8,2</td></tr>
+      <tr><td><strong class="mid">P1</strong></td><td>Publicar o PR #25 (aceite de marketing separado + GA4 antes do cupom)</td><td>Victor</td><td>A2 e A3 8 → 9</td></tr>
+      <tr><td><strong class="mid">P1</strong></td><td>Revisão dos acessos de terceiros</td><td>Manu</td><td>A15 5 → 8</td></tr>
+      <tr><td><strong>P2</strong></td><td>Dados legais na política; view_item no GA4; público de remarketing; categoria do conjunto e EMQ no Meta</td><td>Igor / Victor</td><td>A2, A5, A14 → 10 · C → 9</td></tr>
     </tbody>
   </table></div>
 </section>
 
 <section>
-  <h2>Histórico do dia</h2>
+  <h2>Histórico</h2>
   <div class="tbl"><table>
     <thead><tr><th>Momento</th><th>Site + LP</th><th>Cardápio</th><th>Geral</th></tr></thead>
     <tbody>
@@ -134,7 +169,8 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
       <tr><td>GTM próprio do cardápio nas 14 lojas</td><td>7,4</td><td>6,4</td><td>6,9</td></tr>
       <tr><td>Databite com aviso próprio (aviso duplo)</td><td>7,4</td><td>6,2</td><td>6,8</td></tr>
       <tr><td>7ª rodada (20/11, manhã)</td><td>7,4</td><td>6,2</td><td>6,8</td></tr>
-      <tr><td><strong>Aviso único no cardápio (20/11)</strong></td><td><strong class="hi">7,4</strong></td><td><strong class="mid">6,6</strong></td><td><strong class="hi">7,0</strong></td></tr>
+      <tr><td>Aviso único no cardápio (20/11)</td><td>7,4</td><td>6,6</td><td>7,0</td></tr>
+      <tr><td><strong>9ª rodada · acesso ao Meta, Lead corrigido, CAPI testada (25/11)</strong></td><td><strong class="hi">7,5</strong></td><td><strong class="hi">7,6</strong></td><td><strong class="hi">7,6</strong></td></tr>
     </tbody>
   </table></div>
 </section>
@@ -145,10 +181,11 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
     <li>Chrome automático no site no ar, simulando vinda de anúncio do Meta (UTM + fbclid). Cadastro interceptado e envios ao Meta bloqueados e registrados, inclusive POST.</li>
     <li>Cookies antes e depois do aceite e cada envio a GTM, GA4, Meta e Clarity, fase por fase, até a chegada ao cardápio.</li>
     <li>Configuração do GTM (v4), da tag do Google e do GA4; código do cardápio Databite.</li>
+    <li>25/11: Gerenciador de Eventos do Meta (conjunto de dados, configurações, diagnóstico, Testar eventos), cadastro de teste na LP no ar antes e depois do PR #26, e Lead pelo servidor com test_event_code. Nenhum token aparece neste relatório.</li>
     <li>Régua: 0 não existe · 1–3 falha grave · 4–6 com lacunas · 7–8 bom · 9–10 referência. Método: skill <strong>auditoria-pixel</strong> v1.1.</li>
   </ul>
 </section>
 
-<footer>Feito por Victor Pusanovsky Okada · 18/11/2026</footer>
+<footer>Feito por Victor Pusanovsky Okada · 18/11/2026 · atualizado em 25/11/2026 (9ª rodada)</footer>
 </div>
 </body></html>
