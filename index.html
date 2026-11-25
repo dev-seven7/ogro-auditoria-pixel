@@ -80,7 +80,7 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
       <tr><td class="id">A15</td><td>Governança e acessos</td><td class="mid">4</td><td class="mid"><strong>5</strong></td><td>Time com acesso ao Meta, com 2FA. Lista de permissões de domínio criada. Acessos de terceiros ainda a revisar</td></tr>
       <tr><td class="id">B2</td><td>Funil de e-commerce</td><td class="mid">6</td><td class="hi"><strong>8</strong></td><td>O Meta recebeu o funil inteiro do cardápio desde 18/11: ViewContent 163 · AddToCart 60 · InitiateCheckout 24 · Purchase 21</td></tr>
       <tr><td class="id">B3</td><td>Compra validada</td><td class="lo">3</td><td class="mid"><strong>6</strong></td><td>21 compras reais chegaram ao Meta com value e currency. Falta conferir valor e número com os pedidos do Databite</td></tr>
-      <tr><td class="id">C</td><td>Meta (Gerenciador de Eventos)</td><td>não auditável</td><td class="hi"><strong>8,5</strong></td><td>Agora auditável: conta de anúncios ligada, domínios na lista de permissões, eventos automáticos desligados. Fica fora da média geral para comparar com as rodadas anteriores</td></tr>
+      <tr><td class="id">C</td><td>Meta (Gerenciador de Eventos)</td><td>não auditável</td><td class="hi"><strong>9,4</strong></td><td>Agora auditável: conta de anúncios ligada, domínios na lista de permissões, eventos automáticos desligados, <strong>domínio verificado</strong> e <strong>correspondência automática ligada</strong>. Fica fora da média geral para comparar com as rodadas anteriores</td></tr>
     </tbody>
   </table></div>
   <p class="note">Correção de conta: o título do bloco A na 8ª rodada mostrava 7,5 e o resumo 7,4, mas a soma das 15 notas dava 7,3 (110 ÷ 15). Nesta rodada: A = 113 ÷ 15 = 7,5 · B = 38 ÷ 5 = 7,6 · geral = (7,53 + 7,6) ÷ 2 = 7,6.</p>
@@ -127,17 +127,17 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
 </section>
 
 <section>
-  <h2>C · Meta, Gerenciador de Eventos <span class="hi">8,5</span></h2>
-  <!-- 9+9+9+7 = 34 / 4 = 8,5 (C5 e C6 não auditáveis, fora da média) -->
+  <h2>C · Meta, Gerenciador de Eventos <span class="hi">9,4</span></h2>
+  <!-- 10+9+9+9+10 = 47 / 5 = 9,4 (C5 não auditável, fora da média) -->
   <div class="tbl"><table>
     <thead><tr><th>#</th><th>Parâmetro</th><th>Nota</th><th>Evidência (25/11)</th><th>Para chegar a 10</th></tr></thead>
     <tbody>
-      <tr><td class="id">C1</td><td>Conjunto de dados e conta de anúncios</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>PIXEL7 - Ogro Steaks (4736647279900651), dono: Ogro Steaks; compartilhado com a CA7 - Ogro Steaks</td><td>Escolher a categoria do conjunto (hoje "Nenhuma")</td></tr>
+      <tr><td class="id">C1</td><td>Conjunto de dados e conta de anúncios</td><td class="sc"><span class="bar" style="--v:10;--c:var(--good)"><b>10</b><i></i></span></td><td>PIXEL7 - Ogro Steaks (4736647279900651), dono: Ogro Steaks; compartilhado com a CA7 - Ogro Steaks. Categoria "Nenhuma" está correta: as opções do Meta são só categorias sensíveis (saúde, finanças, política, religião…), e marcar uma restringiria os dados</td><td>—</td></tr>
       <tr><td class="id">C2</td><td>Domínios (lista de permissões)</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Criada em 25/11: ogrosteaks.com.br e cardapio-digital-databite.web.app, com subdomínios. Diagnóstico zerado</td><td>Tirar o demo.ogrosteaks.com.br, que entra junto como subdomínio</td></tr>
       <tr><td class="id">C3</td><td>Eventos automáticos</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Eventos automáticos e rastreamento sem código desligados</td><td>—</td></tr>
-      <tr><td class="id">C4</td><td>Correspondência avançada</td><td class="sc"><span class="bar" style="--v:7;--c:var(--good)"><b>7</b><i></i></span></td><td>Manual: 75% dos PageView já levam dados do cliente em hash. A automática está desligada</td><td>Avaliar ligar a automática no cardápio</td></tr>
-      <tr><td class="id">C5</td><td>EMQ (qualidade da correspondência)</td><td class="sc">—</td><td>Não aparece na tela do conjunto: não auditável</td><td>Ler o EMQ de Lead e Purchase quando o Meta mostrar</td></tr>
-      <tr><td class="id">C6</td><td>Domínio verificado no Business</td><td class="sc">—</td><td>Não conferido nesta rodada: não auditável</td><td>Verificar ogrosteaks.com.br no Gerenciador de Negócios</td></tr>
+      <tr><td class="id">C4</td><td>Correspondência avançada</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Manual: 75% dos PageView já levam dados do cliente em hash. <strong>Automática ligada em 25/11</strong>: e-mail e telefone em hash também nos formulários do cardápio</td><td>Ver o ganho no EMQ quando o Meta mostrar</td></tr>
+      <tr><td class="id">C5</td><td>EMQ (qualidade da correspondência)</td><td class="sc">—</td><td>Não aparece no detalhe dos eventos: o Meta só calcula com volume de eventos de servidor. Não auditável</td><td>Ler o EMQ do Lead depois da CAPI no n8n</td></tr>
+      <tr><td class="id">C6</td><td>Domínio verificado no Business</td><td class="sc"><span class="bar" style="--v:10;--c:var(--good)"><b>10</b><i></i></span></td><td><strong>ogrosteaks.com.br verificado em 25/11</strong> (meta tag no site, PR #27; Business › Domínios: Verified)</td><td>—</td></tr>
     </tbody>
   </table></div>
   <p class="note">O bloco C fica fora da média geral (site 50% + cardápio 50%) para a comparação com as rodadas anteriores continuar valendo. A contagem da Visão geral do Gerenciador atrasa horas; a prova de evento é a aba "Testar eventos".</p>
@@ -152,7 +152,7 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
       <tr><td><strong class="lo">P0</strong></td><td>Cruzar as 21 compras do Meta com os pedidos do Databite (valor, desconto, número)</td><td>Victor + loja</td><td>B3 6 → 9 · Cardápio 7,6 → ~8,2</td></tr>
       <tr><td><strong class="mid">P1</strong></td><td>Publicar o PR #25 (aceite de marketing separado + GA4 antes do cupom)</td><td>Victor</td><td>A2 e A3 8 → 9</td></tr>
       <tr><td><strong class="mid">P1</strong></td><td>Revisão dos acessos de terceiros</td><td>Manu</td><td>A15 5 → 8</td></tr>
-      <tr><td><strong>P2</strong></td><td>Dados legais na política; view_item no GA4; público de remarketing; categoria do conjunto e EMQ no Meta</td><td>Igor / Victor</td><td>A2, A5, A14 → 10 · C → 9</td></tr>
+      <tr><td><strong>P2</strong></td><td>Dados legais na política; view_item no GA4; público de remarketing; ler o EMQ no Meta</td><td>Igor / Victor</td><td>A2, A5, A14 → 10</td></tr>
     </tbody>
   </table></div>
 </section>
