@@ -63,9 +63,9 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
 
 <section>
   <div class="tiles">
-    <div class="tile"><span class="lbl">Site + LP de São Gonçalo</span><span class="num hi">7,5</span><span class="lvl">Avançado · nível 3 de 5 (era 7,3)</span></div>
+    <div class="tile"><span class="lbl">Site + LP de São Gonçalo</span><span class="num hi">7,7</span><span class="lvl">Avançado · nível 3 de 5 (era 7,3)</span></div>
     <div class="tile"><span class="lbl">Cardápio Digital (Databite)</span><span class="num hi">7,6</span><span class="lvl">Avançado · nível 3 de 5 (era 6,6)</span></div>
-    <div class="tile"><span class="lbl">Geral (site 50% · cardápio 50%)</span><span class="num hi">7,6</span><span class="lvl">Avançado · nível 3 de 5 (era 7,0)</span></div>
+    <div class="tile"><span class="lbl">Geral (site 50% · cardápio 50%)</span><span class="num hi">7,7</span><span class="lvl">Avançado · nível 3 de 5 (era 7,0)</span></div>
   </div>
   <div class="lead-box"><p><strong>25/11: o time entrou no Gerenciador de Eventos do Meta.</strong> Com isso deu para ver o que o Meta recebe de verdade. O Lead da LP de SG <strong>não chegava</strong> ao Meta e foi corrigido e publicado hoje. O token da CAPI foi criado e testado. Só os domínios do Ogro podem mandar eventos para o Pixel. E o cardápio já manda compras com valor e moeda: 21 desde 18/11. Falta a CAPI do Lead entrar em produção (n8n) e conferir as compras com os pedidos do Databite.</p></div>
 </section>
@@ -78,35 +78,38 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
       <tr><td class="id">A4</td><td>Lead no Meta</td><td>9*</td><td class="hi"><strong>9</strong></td><td>*A nota anterior não se confirmava no ar: o GTM chega antes do aviso de cookies e a tag do Lead rodava sem Pixel. Corrigido no PR #26. Em "Testar eventos", o cadastro das 13h06 (antes) só tem PageView, e o das 13h21 (depois) tem <strong>Lead · Navegador · Processado</strong> com event_id</td></tr>
       <tr><td class="id">A8</td><td>CAPI (servidor)</td><td class="lo">0</td><td class="mid"><strong>2</strong></td><td>Token da Conversions API criado e guardado no 1Password. Lead de teste pelo servidor <strong>Processado</strong> no Meta. Ainda não envia leads reais (falta o n8n)</td></tr>
       <tr><td class="id">A15</td><td>Governança e acessos</td><td class="mid">4</td><td class="mid"><strong>5</strong></td><td>Time com acesso ao Meta, com 2FA. Lista de permissões de domínio criada. Acessos de terceiros ainda a revisar</td></tr>
+      <tr><td class="id">A3</td><td>Visita (GA4 da LP)</td><td class="hi">8</td><td class="hi"><strong>9</strong></td><td>A LP espera 400 ms antes do cupom: o GA4 recebe page_view, bairro_check e form_start antes de sair (PR #28)</td></tr>
+      <tr><td class="id">A5</td><td>Micro-conversões no GA4</td><td class="hi">8</td><td class="hi"><strong>9</strong></td><td>view_item com o burger chega ao GA4 no site no ar. GTM v6 = v4 + essa tag (a v5, que quebrou o site em 18/11, ficou revertida)</td></tr>
+      <tr><td class="id">A10</td><td>Identificação da unidade</td><td class="hi">8</td><td class="hi"><strong>9</strong></td><td>Clique de pedido do site institucional com store_id da loja (no ar: ogro_araruama no GA4)</td></tr>
       <tr><td class="id">B2</td><td>Funil de e-commerce</td><td class="mid">6</td><td class="hi"><strong>8</strong></td><td>O Meta recebeu o funil inteiro do cardápio desde 18/11: ViewContent 163 · AddToCart 60 · InitiateCheckout 24 · Purchase 21</td></tr>
       <tr><td class="id">B3</td><td>Compra validada</td><td class="lo">3</td><td class="mid"><strong>6</strong></td><td>21 compras reais chegaram ao Meta com value e currency. Falta conferir valor e número com os pedidos do Databite</td></tr>
       <tr><td class="id">C</td><td>Meta (Gerenciador de Eventos)</td><td>não auditável</td><td class="hi"><strong>9,4</strong></td><td>Agora auditável: conta de anúncios ligada, domínios na lista de permissões, eventos automáticos desligados, <strong>domínio verificado</strong> e <strong>correspondência automática ligada</strong>. Fica fora da média geral para comparar com as rodadas anteriores</td></tr>
     </tbody>
   </table></div>
-  <p class="note">Correção de conta: o título do bloco A na 8ª rodada mostrava 7,5 e o resumo 7,4, mas a soma das 15 notas dava 7,3 (110 ÷ 15). Nesta rodada: A = 113 ÷ 15 = 7,5 · B = 38 ÷ 5 = 7,6 · geral = (7,53 + 7,6) ÷ 2 = 7,6.</p>
+  <p class="note">Correção de conta: o título do bloco A na 8ª rodada mostrava 7,5 e o resumo 7,4, mas a soma das 15 notas dava 7,3 (110 ÷ 15). Nesta rodada: A = 116 ÷ 15 = 7,7 · B = 38 ÷ 5 = 7,6 · geral = (7,73 + 7,6) ÷ 2 = 7,7.</p>
 </section>
 
 <section>
-  <h2>A · Site + LP de São Gonçalo <span class="hi">7,5</span></h2>
-  <!-- 9ª rodada: 8+8+8+9+8+7+8+2+6+8+9+9+9+9+5 = 113 / 15 = 7,53 -->
+  <h2>A · Site + LP de São Gonçalo <span class="hi">7,7</span></h2>
+  <!-- 9ª rodada: 8+8+9+9+9+7+8+2+6+9+9+9+9+9+5 = 116 / 15 = 7,73 -->
   <div class="tbl"><table>
     <thead><tr><th>#</th><th>Parâmetro</th><th>Nota</th><th>Evidência (no ar)</th><th>Para chegar a 10</th></tr></thead>
     <tbody>
       <tr><td class="id">A1</td><td>Instalação</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>GTM v4, GA4 e Pixel 1x por página; versões documentadas</td><td>CAPI fecha o ciclo</td></tr>
       <tr><td class="id">A2</td><td>Consentimento / LGPD</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>0 envios antes do aceite e com "Só o essencial". Mas o formulário da LP junta cupom e marketing num só aceite</td><td>Separar o aceite de marketing do cupom; dados legais na política</td></tr>
-      <tr><td class="id">A3</td><td>Visita (PageView)</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>1 por página com consentimento; em 1 de 3 testes o GA4 perdeu page_view e bairro_check da LP (redirecionamento rápido para o cupom)</td><td>Segurar o redirecionamento ~300 ms</td></tr>
+      <tr><td class="id">A3</td><td>Visita (PageView)</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>1 por página com consentimento. <strong>25/11 (PR #28):</strong> a LP espera 400 ms antes do cupom e o GA4 recebe page_view, bairro_check e form_start antes de sair</td><td>Medir a perda por semana no GA4</td></tr>
       <tr><td class="id">A4</td><td>Conversão principal: Lead</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Após o n8n confirmar; 1x por cadastro; não repete ao recarregar; evento principal no GA4. <strong>Confirmado no Meta em 25/11</strong> (Testar eventos: Lead · Navegador · Processado, depois do PR #26)</td><td>Envio também pelo servidor</td></tr>
-      <tr><td class="id">A5</td><td>Micro-conversões no GA4</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>Bairro, CTA, formulário, clique para pedir, burger e raspadinha, com 8 dimensões</td><td>view_item dos burgers no GA4</td></tr>
+      <tr><td class="id">A5</td><td>Micro-conversões no GA4</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Bairro, CTA, formulário, clique para pedir, burger e raspadinha, com 8 dimensões. <strong>25/11:</strong> view_item com o burger (BRL, item) chega ao GA4 no site no ar (GTM v6 + PR #28)</td><td>Preço no item, quando o site tiver preço</td></tr>
       <tr><td class="id">A6</td><td>Eventos de navegação no Meta</td><td class="sc"><span class="bar" style="--v:7;--c:var(--good)"><b>7</b><i></i></span></td><td>ViewContent no cardápio e ao escolher burger; CliquePedido</td><td>Padronizar o clique de pedido quando o checkout for medido</td></tr>
       <tr><td class="id">A7</td><td>Correspondência avançada</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>Lead com e-mail, telefone, nome, cidade, UF e país em hash SHA-256</td><td>Conferir o EMQ no Meta</td></tr>
       <tr><td class="id">A8</td><td>CAPI (servidor)</td><td class="sc"><span class="bar" style="--v:2;--c:var(--bad)"><b>2</b><i></i></span></td><td>Token criado (1Password) e Lead de teste pelo servidor Processado no Meta; nenhum lead real ainda vai pelo servidor</td><td>2 nós no n8n + publicar o PR #19</td></tr>
       <tr><td class="id">A9</td><td>Deduplicação</td><td class="sc"><span class="bar" style="--v:6;--c:var(--warn)"><b>6</b><i></i></span></td><td>event_id em PageView, ViewContent e Lead (padrão ogro_sg_lead_…, visto no Meta)</td><td>Mesmo event_id na CAPI</td></tr>
-      <tr><td class="id">A10</td><td>Identificação da unidade</td><td class="sc"><span class="bar" style="--v:8;--c:var(--good)"><b>8</b><i></i></span></td><td>store_id em todos os eventos da LP; dimensão no GA4</td><td>store_id no site institucional</td></tr>
+      <tr><td class="id">A10</td><td>Identificação da unidade</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>store_id em todos os eventos da LP; dimensão no GA4. <strong>25/11 (PR #28):</strong> o clique de pedido do site institucional leva o store_id da loja (testado no ar: ogro_araruama no GA4)</td><td>Mesmo id de loja no site e no Databite</td></tr>
       <tr><td class="id">A11</td><td>UTMs e atribuição</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>UTM e fbclid chegam ao GA4 e até a URL do cardápio</td><td>—</td></tr>
       <tr><td class="id">A12</td><td>Entre domínios</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Link do cardápio com _gl e UTM</td><td>—</td></tr>
       <tr><td class="id">A13</td><td>Ruído</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>Sem eventos automáticos do Meta (desligados no Gerenciador); só domínios do Ogro na lista de permissões</td><td>—</td></tr>
       <tr><td class="id">A14</td><td>Configuração do GA4</td><td class="sc"><span class="bar" style="--v:9;--c:var(--good)"><b>9</b><i></i></span></td><td>14 meses, 8 dimensões, eventos principais, filtro de desenvolvedor</td><td>Público de remarketing</td></tr>
-      <tr><td class="id">A15</td><td>Governança e acessos</td><td class="sc"><span class="bar" style="--v:5;--c:var(--warn)"><b>5</b><i></i></span></td><td>Ativos na conta do cliente e versões documentadas; time com acesso ao Meta (2FA) desde 25/11; token da CAPI só no cofre; acessos de terceiros ainda a revisar</td><td>Revisar acessos de terceiros</td></tr>
+      <tr><td class="id">A15</td><td>Governança e acessos</td><td class="sc"><span class="bar" style="--v:5;--c:var(--warn)"><b>5</b><i></i></span></td><td>Ativos na conta do cliente e versões documentadas; time com acesso ao Meta (2FA) desde 25/11; token da CAPI só no cofre. Levantamento de acessos feito em 25/11 (Meta, GTM e GA4): 6 de 8 acessos do GTM/GA4 são da agência anterior, um deles uma conta de serviço administradora; no Meta, 7 de 8 com acesso total e 1 sem 2FA</td><td>Decisão da Manu sobre a agência anterior; remover ou reduzir os acessos</td></tr>
     </tbody>
   </table></div>
 </section>
@@ -150,7 +153,7 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
     <tbody>
       <tr><td><strong class="lo">P0</strong></td><td>CAPI do Lead em produção: 2 nós no n8n lendo o token do 1Password, teste com test_event_code, publicar o PR #19</td><td>Matheus + Victor</td><td>A8 2 → 9 · A9 6 → 9 · Site+LP 7,5 → ~8,2</td></tr>
       <tr><td><strong class="lo">P0</strong></td><td>Cruzar as 21 compras do Meta com os pedidos do Databite (valor, desconto, número)</td><td>Victor + loja</td><td>B3 6 → 9 · Cardápio 7,6 → ~8,2</td></tr>
-      <tr><td><strong class="mid">P1</strong></td><td>Publicar o PR #25 (aceite de marketing separado + GA4 antes do cupom)</td><td>Victor</td><td>A2 e A3 8 → 9</td></tr>
+      <tr><td><strong class="mid">P1</strong></td><td>Conferir se a planilha do n8n aceita coluna nova e publicar o PR #25 (aceite de marketing separado)</td><td>Matheus + Victor</td><td>A2 8 → 9</td></tr>
       <tr><td><strong class="mid">P1</strong></td><td>Revisão dos acessos de terceiros</td><td>Manu</td><td>A15 5 → 8</td></tr>
       <tr><td><strong>P2</strong></td><td>Dados legais na política; view_item no GA4; público de remarketing; ler o EMQ no Meta</td><td>Igor / Victor</td><td>A2, A5, A14 → 10</td></tr>
     </tbody>
@@ -170,7 +173,7 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
       <tr><td>Databite com aviso próprio (aviso duplo)</td><td>7,4</td><td>6,2</td><td>6,8</td></tr>
       <tr><td>7ª rodada (20/11, manhã)</td><td>7,4</td><td>6,2</td><td>6,8</td></tr>
       <tr><td>Aviso único no cardápio (20/11)</td><td>7,4</td><td>6,6</td><td>7,0</td></tr>
-      <tr><td><strong>9ª rodada · acesso ao Meta, Lead corrigido, CAPI testada (25/11)</strong></td><td><strong class="hi">7,5</strong></td><td><strong class="hi">7,6</strong></td><td><strong class="hi">7,6</strong></td></tr>
+      <tr><td><strong>9ª rodada · acesso ao Meta, Lead corrigido, CAPI testada (25/11)</strong></td><td><strong class="hi">7,7</strong></td><td><strong class="hi">7,6</strong></td><td><strong class="hi">7,7</strong></td></tr>
     </tbody>
   </table></div>
 </section>
